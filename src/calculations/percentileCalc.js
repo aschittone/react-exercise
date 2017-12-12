@@ -42,7 +42,8 @@ function getCandidate(candidateID, records) {
 }
 
 export function formatNum(num) {
-	switch (num[num.length - 1]) {
+	var n = num.toString()
+	switch (n[n.length - 1]) {
 		case "1":
 			return num + 'st'
 		case "2":

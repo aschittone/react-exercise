@@ -1,5 +1,6 @@
 # Simple Fractal Coding Exercise 
 
+  This is a react app using redux, that allows a user to enter in a candidate ID to search for their communcation and coding score percentiles. 
 
 # Instructions:
 
@@ -10,3 +11,4 @@
 
 # Demo
 
+https://simple-fractal-coding-exercise.herokuapp.com/

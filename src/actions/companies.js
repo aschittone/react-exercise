@@ -1,13 +1,15 @@
-const Papa = require("papaparse/papaparse.min.js")
+import Companies from './data/companies.js'
 
 export function companiesFetchData() {
 	return function (dispatch) {
-		Papa.parse('https://s3.amazonaws.com/simple-fractal-recruiting/companies.csv', {
-			download: true,
-			header: true,
-			complete: function (results) {
-				dispatch({ type: "FETCHED_COMPANIES", payload: results.data })
+		var result = { companies: [] }
+		var data = Companies.companies
+		data.forEach((ele, i) => {
+			if (i !== 0) {
+				result.companies.push({ [data[0][0]]: ele[0].toString(), [data[0][1]]: ele[1].toString() })
 			}
-		});
+		})
+		dispatch({ type: "FETCHED_COMPANIES", payload: result.companies })
+
 	}
 }

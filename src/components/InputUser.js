@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
-class Input extends React.Component {
+class Input extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -29,7 +29,7 @@ class Input extends React.Component {
       })
     } else {
       this.setState({
-        errorText: 'candidate not found'
+        errorText: 'Candidate Not Found'
       })
     }
   }

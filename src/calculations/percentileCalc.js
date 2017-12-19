@@ -6,10 +6,10 @@ export function getResults(candidateID, studentRecords, companyData) {
 }
 
 function getPercentiles(candidate, data) {
-	let rCode = sortCode(data).indexOf(candidate) + 1
 	let n = data.length
-	let codePercentile = (100 / (n + 1)) * rCode
+	let rCode = sortCode(data).indexOf(candidate) + 1
 	let rCom = sortCommunication(data).indexOf(candidate) + 1
+	let codePercentile = (100 / (n + 1)) * rCode
 	let comPercentile = (100 / (n + 1)) * rCom
 	return { code: codePercentile, com: comPercentile }
 }
@@ -17,11 +17,10 @@ function getPercentiles(candidate, data) {
 function organizeData(candidateID, studentRecords, companyData) {
 	let candidate = getCandidate(candidateID, studentRecords)
 	let company = companyData.filter((comp) => candidate.company_id === comp.company_id)
-	let narrowedRecords = studentRecords.filter((ele) => {
+	return studentRecords.filter((ele) => {
 		let company2 = companyData.filter((comp) => ele.company_id === comp.company_id)
 		return ele.title === candidate.title && isSimilarCompany(company, company2)
 	})
-	return narrowedRecords
 }
 
 function sortCode(data) {

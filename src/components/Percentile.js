@@ -2,7 +2,6 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import { formatNum } from '../calculations/percentileCalc'
 
-
 const Percentile = (props) => {
   return (
     <div>

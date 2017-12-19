@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
-import { companiesReducer } from './companiesReducer';
-import { scoreRecordsReducer } from './scoreRecordsReducer';
+import { dataReducer } from './dataReducer';
 import { percentileReducer } from './percentileReducer';
 
 
 export default combineReducers({
-	companies: companiesReducer,
-	scoreRecords: scoreRecordsReducer,
+	data: dataReducer,
 	showPercentileNum: percentileReducer
 });

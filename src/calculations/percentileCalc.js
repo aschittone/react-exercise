@@ -16,9 +16,9 @@ function getPercentiles(candidate, data) {
 
 function organizeData(candidateID, studentRecords, companyData) {
 	let candidate = getCandidate(candidateID, studentRecords)
-	let company = companyData.companies.filter((comp) => candidate.company_id === comp.company_id)
-	let narrowedRecords = studentRecords.scoreRecords.filter((ele) => {
-		let company2 = companyData.companies.filter((comp) => ele.company_id === comp.company_id)
+	let company = companyData.filter((comp) => candidate.company_id === comp.company_id)
+	let narrowedRecords = studentRecords.filter((ele) => {
+		let company2 = companyData.filter((comp) => ele.company_id === comp.company_id)
 		return ele.title === candidate.title && isSimilarCompany(company, company2)
 	})
 	return narrowedRecords
@@ -37,20 +37,21 @@ function isSimilarCompany(company1, company2) {
 }
 
 function getCandidate(candidateID, records) {
-	let record = records.scoreRecords.filter((ele) => ele.candidate_id === candidateID)
+	let record = records.filter((ele) => ele.candidate_id === candidateID)
 	return record[0]
 }
 
 export function formatNum(num) {
 	var n = num.toString()
-	switch (n[n.length - 1]) {
-		case "1":
-			return num + 'st'
-		case "2":
-			return num + 'nd'
-		case "3":
-			return num + 'rd'
-		default:
-			return num + 'th'
+	if (n[n.length - 1] === 3 && n[n.length - 2] === "1") {
+		return num + 'th'
+	} else if (n[n.length - 1] === '1') {
+		return num + 'st'
+	} else if (n[n.length - 1] === "2") {
+		return num + 'nd'
+	} else if (n[n.length - 1] === "3") {
+		return num + 'rd'
+	} else {
+		return num + 'th'
 	}
 }

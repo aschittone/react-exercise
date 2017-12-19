@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import Percentile from './Percentile'
 import InputUser from './InputUser'
 import { connect } from 'react-redux';
-import { companiesFetchData } from '../actions/companies'
-import { scoreRecordsFetchData } from '../actions/scoreRecords'
+import { companiesFetchData } from '../actions/data'
+import { scoreRecordsFetchData } from '../actions/data'
 import { showPercentile } from '../actions/percentile'
 import { getResults } from '../calculations/percentileCalc'
-
-
 
 class DisplayContainer extends Component {
 
@@ -28,7 +26,9 @@ class DisplayContainer extends Component {
 	render() {
 		return (
 			<div>
-				{this.props.showPercentileNum ? <Percentile candidate={this.props.candidate} com={this.props.comPercentile} code={this.props.codePercentile} handleClick={this.handleClick} /> : <InputUser handleClick={this.handleClick} scoreRecords={this.props.scoreRecords} />}
+				{this.props.showPercentileNum ?
+					<Percentile candidate={this.props.candidate} com={this.props.comPercentile} code={this.props.codePercentile} handleClick={this.handleClick} /> :
+					<InputUser handleClick={this.handleClick} scoreRecords={this.props.scoreRecords} />}
 			</div>
 		);
 	}
@@ -36,8 +36,8 @@ class DisplayContainer extends Component {
 
 function mapStateToProps(state) {
 	return {
-		companies: state.companies,
-		scoreRecords: state.scoreRecords,
+		companies: state.data.companies,
+		scoreRecords: state.data.scoreRecords,
 		comPercentile: state.showPercentileNum.comPercentile,
 		codePercentile: state.showPercentileNum.codePercentile,
 		candidate: state.showPercentileNum.candidateID,

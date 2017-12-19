@@ -1,4 +1,4 @@
-import { getResults } from './percentileCalc'
+import { getResults } from './percentileCalc';
 
 test('returns the correct percentiles for sample data set', () => {
 	expect(

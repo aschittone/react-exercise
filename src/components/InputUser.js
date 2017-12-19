@@ -20,7 +20,7 @@ class Input extends React.Component {
   }
 
   handleClick = () => {
-    let candidate = this.props.scoreRecords.scoreRecords.filter((ele) => ele.candidate_id === this.state.value)
+    let candidate = this.props.scoreRecords.filter((ele) => ele.candidate_id === this.state.value)
     if (candidate.length >= 1) {
       this.props.handleClick(this.state.value)
       this.setState({
@@ -40,8 +40,6 @@ class Input extends React.Component {
         <TextField hintText="Enter Candidate ID Here"
           onChange={this.handleChange}
           errorText={this.state.errorText}
-          floatingLabelStyle={{ color: '#000' }}
-          floatingLabelFocusStyle={{ color: '#000' }}
           underlineFocusStyle={{ borderColor: '#000' }}
         />
         <FlatButton onClick={this.handleClick}

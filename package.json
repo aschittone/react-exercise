@@ -26,5 +26,36 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "babel": {
+    "plugins": [
+      "syntax-dynamic-import",
+      "transform-runtime"
+    ],
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
+      "react"
+    ],
+    "env": {
+      "start": {
+        "presets": [
+          "react-hmre"
+        ]
+      },
+      "test": {
+        "presets": [
+          "es2015",
+          "react"
+        ]
+      }
+    }
   }
 }

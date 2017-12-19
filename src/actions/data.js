@@ -11,7 +11,6 @@ export function companiesFetchData() {
 			}
 		})
 		dispatch({ type: "FETCHED_COMPANIES", payload: result.companies })
-
 	}
 }
 
